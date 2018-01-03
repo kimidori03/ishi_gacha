@@ -18,6 +18,7 @@ public class DetailController : MonoBehaviour {
 	public Text desc;
 
 	public RectTransform panel;
+	public float panelEndScale = .9f;
 
 	public float onDuration = .25f;
 
@@ -27,7 +28,7 @@ public class DetailController : MonoBehaviour {
 	void Start () {
 		instance = this;
 		panel.localScale = Vector3.zero;
-		panel.DOScale(1, onDuration).SetEase(Ease.OutBack);
+		panel.DOScale(panelEndScale, onDuration).SetEase(Ease.OutBack);
 	}
 	
 	// Update is called once per frame
