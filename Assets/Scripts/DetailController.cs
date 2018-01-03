@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class DetailController : MonoBehaviour {
 
@@ -16,11 +17,17 @@ public class DetailController : MonoBehaviour {
 	public string[] descTemplates;
 	public Text desc;
 
+	public RectTransform panel;
+
+	public float onDuration = .25f;
+
 	public static DetailController instance;
 
 	// Use this for initialization
 	void Start () {
 		instance = this;
+		panel.localScale = Vector3.zero;
+		panel.DOScale(1, onDuration).SetEase(Ease.OutBack);
 	}
 	
 	// Update is called once per frame
