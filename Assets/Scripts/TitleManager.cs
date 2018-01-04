@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour {
 
@@ -10,9 +11,9 @@ public class TitleManager : MonoBehaviour {
 	public float duration = 1f;
 	private float timer = 0;
 
-
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		StartCoroutine (showlogo());
 	}
 	
@@ -20,7 +21,9 @@ public class TitleManager : MonoBehaviour {
 	void Update () {
 	}
 
-	private IEnumerator showlogo() {
+	// フェードアウトでロゴを表示する
+	private IEnumerator showlogo()
+	{
 		while(timer < delay){
 			timer += Time.deltaTime;
 			yield return null;
@@ -34,7 +37,9 @@ public class TitleManager : MonoBehaviour {
 			yield return null;
 		}
 
-	
+		// メニューシーンを開く
+		SceneManager.LoadSceneAsync( "MenuUI", LoadSceneMode.Additive );
 	
 	}
+		
 }
