@@ -9,6 +9,9 @@ public class UIcontroller : MonoBehaviour {
 	public Ishi_button ishi_button;
 	public GameObject buttonSet;
 
+	private int count;
+	public int chargePerGacha = 10;
+
 	public void onclickretrybutton()
 	{
 		Debug.Log ("まああああ");
@@ -20,6 +23,8 @@ public class UIcontroller : MonoBehaviour {
 	void Start () {
 		Debug.Log (gameObject.name);
 		buttonSet.gameObject.SetActive (false);
+
+		count = PlayerPrefs.GetInt("Charge");
 	}
 	
 	// Update is called once per frame
@@ -30,6 +35,22 @@ public class UIcontroller : MonoBehaviour {
 	public void onclickishibutton()
 	{
 		Debug.Log ("わあ");
+
+		// スタミナ不足の時は演出見せずにメニュー出す
+		if( count <  chargePerGacha )
+		{
+			Debug.LogWarning ("石不足");
+
+			SceneManager.LoadSceneAsync("MenuUI", LoadSceneMode.Additive);
+
+			return;
+		}
+
+		count -= chargePerGacha;
+
+		PlayerPrefs.SetInt("Charge", count);
+
+
 		StartCoroutine (waitanddisplaybutton());
 	}
 
