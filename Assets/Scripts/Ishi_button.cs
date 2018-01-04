@@ -129,7 +129,7 @@ public class Ishi_button : MonoBehaviour {
 
 			// 石プレハブを生成
 			stone = Instantiate (Stoneprefab [index])as GameObject;
-			stone.transform.parent = parent;
+			stone.transform.SetParent( parent );
 			stone.transform.localPosition = Vector2.zero;
 			stone.transform.localScale = Vector2.one * 0.4f;
 
