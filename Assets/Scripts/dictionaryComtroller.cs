@@ -28,6 +28,8 @@ public class dictionaryComtroller : MonoBehaviour {
 			}
 		}
 
+		SceneManager.LoadSceneAsync( "MenuUI", LoadSceneMode.Additive );
+
 	}
 	
 	// Update is called once per frame
