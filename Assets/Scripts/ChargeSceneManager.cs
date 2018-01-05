@@ -30,6 +30,9 @@ public class ChargeSceneManager : MonoBehaviour
 	[SerializeField]
 	private RectTransform chargeItemParent;
 
+	[SerializeField]
+	private Image gauge;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -58,6 +61,14 @@ public class ChargeSceneManager : MonoBehaviour
 	public void OnClickButton( GameObject item )
 	{
 		count++;
+
+		var parGacha = 10;
+		var surplus = count % parGacha;
+		var percent = (float)surplus / parGacha;
+
+		Debug.Log( percent );
+
+		gauge.fillAmount = percent;
 
 		item.SetActive( false );
 	}
