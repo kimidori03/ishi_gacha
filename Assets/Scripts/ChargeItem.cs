@@ -29,7 +29,7 @@ public class ChargeItem : MonoBehaviour {
 
 	public void OnClick()
 	{
-		Debug.Log(System.Reflection.MethodBase.GetCurrentMethod());
+		ChargeSceneManager.instance.OnClickButton(this.gameObject);
 	}
 
 	private void Glitter()
