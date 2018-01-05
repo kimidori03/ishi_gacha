@@ -11,8 +11,6 @@ public class ChargeItem : MonoBehaviour {
 	[SerializeField]
 	RectTransform kira2;
 
-	private float scale = 1f;
-
 	[SerializeField]
 	private float duration = 1f;
 
