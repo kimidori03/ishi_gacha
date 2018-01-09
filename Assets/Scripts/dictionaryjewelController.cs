@@ -5,23 +5,38 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class dictionaryjewelController : MonoBehaviour {
-	public Sprite[] jewelsprites;
-	public Sprite unknown;
-	public Image jewelimage;
+	public GameObject[] jewels;
+	public GameObject unknwon;
+	public float scale = 0.1f;
+	public float unknwonScale = 0.4f;
+	public Transform parent;
 
 	private int id;
 
 	public void init(int id, bool isencountered){
 
 		this.id = id;
+
+		GameObject stone = null;
+
 		if (!isencountered) {
-			jewelimage.sprite = unknown;
-			return;
+			stone = Instantiate(unknwon);
+			stone.transform.localScale = Vector2.one * unknwonScale;
+
 		}
-		if (id >= jewelsprites.Length) {
-			return;
+		else if( id < jewels.Length )
+		{
+			stone = Instantiate(jewels[id]);
+			stone.transform.localScale = Vector2.one * scale;
 		}
-		jewelimage.sprite = jewelsprites [id];
+
+		if( stone == null ) return;
+
+		stone.transform.SetParent( parent );
+		stone.transform.localPosition = Vector2.zero;
+
+//		jewelimage.sprite = jewelsprites [id];
+
 	}
 
 	/// <summary>
