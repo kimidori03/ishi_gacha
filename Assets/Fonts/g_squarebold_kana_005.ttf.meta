@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 240dbea71aec44350b6476f8f3dec85c
+timeCreated: 1515493262
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: g_squarebold-kana prev
+  fontNames:
+  - g_squarebold-kana prev
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
