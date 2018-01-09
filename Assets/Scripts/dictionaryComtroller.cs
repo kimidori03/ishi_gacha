@@ -13,20 +13,20 @@ public class dictionaryComtroller : MonoBehaviour {
 	public int row2 = 3;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		int id = 0;
 		for(int line = 0; line < linenumber; ++line){
 			bool isoddline = line % 2 == 0;
 			int rownumber = isoddline ? row1 : row2;
 			int add = isoddline?0:(int)(offset.x/2);
-			for (int i = 0; i < rownumber; ++i) {
+			for (int i = 0; i < rownumber; ++i)
+			{
 				var obj = Instantiate (ishiprefab).GetComponent < dictionaryjewelController >();
-			obj.transform.SetParent (ishibase);
+				obj.transform.SetParent (ishibase);
 				obj.transform.localPosition = originposition + new Vector2 ((offset.x * i)+add, offset.y * line);
 				obj.init (id, checkisencountered(id));
-				id++;
-
-				
+				id++;				
 			}
 		}
 
