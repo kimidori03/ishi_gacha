@@ -17,6 +17,8 @@ public class UIcontroller : MonoBehaviour {
 		Debug.Log ("まああああ");
 		ishi_button.cleanup ();
 		buttonSet.gameObject.SetActive (false);
+
+		SceneManager.UnloadSceneAsync("MenuUI");
 	}
 		
 	// Use this for initialization
