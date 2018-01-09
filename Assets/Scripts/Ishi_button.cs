@@ -21,6 +21,9 @@ public class Ishi_button : MonoBehaviour {
 	public float zoomspeed = 1f;
 	public GameObject flash;
 
+	[SerializeField]
+	private AudioSource audioSource;
+
 	public void cleanup(){
 		Destroy (stone);
 		Destroy (kira);
@@ -133,12 +136,15 @@ public class Ishi_button : MonoBehaviour {
 			stone.transform.localPosition = Vector2.zero;
 			stone.transform.localScale = Vector2.one * 0.4f;
 
+
 			// キラキラエフェクトを生成
 			kira = Instantiate (Kirakira)as GameObject;
 			flash.SetActive (true);
 
 			// １秒待つ
 			yield return new WaitForSeconds (1);
+
+			audioSource.Play();
 
 			// ホワイトアウトを徐々に薄くする
 			while (alpha > 0) {
