@@ -9,13 +9,15 @@ public class dictionaryComtroller : MonoBehaviour {
 	public Vector2 originposition;
 	public Vector2 offset = Vector2.one * 150f;
 	public int linenumber = 5;
+	public int row1 = 4;
+	public int row2 = 3;
 
 	// Use this for initialization
 	void Start () {
 		int id = 0;
 		for(int line = 0; line < linenumber; ++line){
 			bool isoddline = line % 2 == 0;
-			int rownumber = isoddline ? 4 : 3;
+			int rownumber = isoddline ? row1 : row2;
 			int add = isoddline?0:(int)(offset.x/2);
 			for (int i = 0; i < rownumber; ++i) {
 				var obj = Instantiate (ishiprefab).GetComponent < dictionaryjewelController >();

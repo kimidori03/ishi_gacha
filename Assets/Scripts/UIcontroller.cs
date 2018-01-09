@@ -64,6 +64,9 @@ public class UIcontroller : MonoBehaviour {
 		buttonSet.gameObject.SetActive (true);
 		inexpression = false;
 
+		// メニューUI表示
+		SceneManager.LoadScene( "MenuUI", LoadSceneMode.Additive );
+
 	}
 	public void button() 
 	{
