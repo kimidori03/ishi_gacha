@@ -33,6 +33,18 @@ public class ChargeSceneManager : MonoBehaviour
 	[SerializeField]
 	private Image gauge;
 
+	/// <summary>
+	/// キラキラ発生時の効果音
+	/// </summary>
+	[SerializeField]
+	private AudioClip kira2Sound;
+
+	/// <summary>
+	/// 音源
+	/// </summary>
+	[SerializeField]
+	private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -122,5 +134,8 @@ public class ChargeSceneManager : MonoBehaviour
 		}
 
 		obj.transform.localPosition = pos;
+
+		// 効果音
+		audioSource.PlayOneShot( kira2Sound );
 	}
 }
