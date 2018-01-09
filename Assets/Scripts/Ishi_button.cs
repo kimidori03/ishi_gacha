@@ -8,10 +8,12 @@ public class Ishi_button : MonoBehaviour {
 
 	public Transform parent;
 	public List<GameObject> Stoneprefab;
+	public List<GameObject> StoneNameaPrefab;
 	public Image white;
 	public GameObject tap;
 	public GameObject Kirakira;
 	private GameObject stone;
+	private GameObject stoneName;
 	private GameObject kira;
 	public GirlController girl;
 	public float wait_girl = 3f;
@@ -20,12 +22,16 @@ public class Ishi_button : MonoBehaviour {
 	public float cavescale_focused = 2.5f;
 	public float zoomspeed = 1f;
 	public GameObject flash;
+	public Vector2 stoneNameOffset;
 
 	[SerializeField]
 	private AudioSource audioSource;
 
+	public float stoneNameScale = 0.6f;
+
 	public void cleanup(){
 		Destroy (stone);
+		Destroy (stoneName);
 		Destroy (kira);
 		tap.SetActive (true);
 		GetComponent <Image> ().enabled = true;
@@ -136,6 +142,10 @@ public class Ishi_button : MonoBehaviour {
 			stone.transform.localPosition = Vector2.zero;
 			stone.transform.localScale = Vector2.one * 0.4f;
 
+			stoneName = Instantiate (StoneNameaPrefab [index])as GameObject;
+			stoneName.transform.SetParent( parent );
+			stoneName.transform.localPosition = Vector2.zero + stoneNameOffset;
+			stoneName.transform.localScale = Vector2.one * stoneNameScale;
 
 			// キラキラエフェクトを生成
 			kira = Instantiate (Kirakira)as GameObject;
