@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 97a09a3ff52824687b47adda6ca2ad33
+timeCreated: 1515571749
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Fujiya_pan
+  fontNames:
+  - Fujiya_pan
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
