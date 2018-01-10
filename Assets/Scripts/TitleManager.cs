@@ -10,6 +10,17 @@ public class TitleManager : MonoBehaviour {
 	public float delay = 1f;
 	public float duration = 1f;
 	private float timer = 0;
+	private List<Kira2InTitle> kira2Pool;
+	public Kira2InTitle kira2Prefab;
+	public int maxKira2Count = 10;
+	public float minKira2SpawnInterval = 1f;
+	public float maxKira2SpawnInterval = 3f;
+	private float kira2Timer = 0;
+	private float currentInterval = 1f;
+	public Transform kira2Parent;
+	public float minKira2MoveSpeed = 1f;
+	public float maxKira2MoveSpeed = 5f;
+	public Vector2 moveDirection = Vector2.down;
 
 	// Use this for initialization
 	void Start ()
@@ -19,6 +30,7 @@ public class TitleManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		SpawnKira2();
 	}
 
 	// フェードアウトでロゴを表示する
@@ -41,5 +53,46 @@ public class TitleManager : MonoBehaviour {
 		SceneManager.LoadSceneAsync( "MenuUI", LoadSceneMode.Additive );
 	
 	}
-		
+
+	private void SpawnKira2()
+	{
+		timer += Time.deltaTime;
+		if( timer < currentInterval )
+		{
+			return;
+		}
+
+		timer = 0;
+		currentInterval = Random.Range( minKira2SpawnInterval, maxKira2SpawnInterval);
+
+
+		Kira2InTitle obj = null;
+
+		  
+		if( kira2Pool != null )
+		{
+			foreach( Kira2InTitle o in kira2Pool )
+			{
+				if( !o.gameObject.activeSelf )
+				{
+					obj = o;
+					obj.gameObject.SetActive( true );
+					break;
+				}
+			}
+		}
+		else
+		{
+			kira2Pool = new List<Kira2InTitle>();
+		}
+
+		if( obj == null  )
+		{
+			obj = Instantiate( kira2Prefab, kira2Parent ).GetComponent<Kira2InTitle>();
+			kira2Pool.Add( obj );
+		}
+
+		obj.transform.localPosition = new Vector3(Random.Range( -Screen.width / 2, Screen.width /2 ), Screen.height / 2, 0);
+		obj.Init( moveDirection, Random.Range( minKira2MoveSpeed, maxKira2MoveSpeed ) );
+	}		
 }
