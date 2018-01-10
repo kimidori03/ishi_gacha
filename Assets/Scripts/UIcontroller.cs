@@ -11,12 +11,14 @@ public class UIcontroller : MonoBehaviour {
 
 	private int count;
 	public int chargePerGacha = 10;
+	public GameObject tapObj;
 
 	public void onclickretrybutton()
 	{
 		Debug.Log ("まああああ");
 		ishi_button.cleanup ();
 		buttonSet.gameObject.SetActive (false);
+		tapObj.SetActive( true );
 
 		SceneManager.UnloadSceneAsync("MenuUI");
 	}
@@ -25,6 +27,7 @@ public class UIcontroller : MonoBehaviour {
 	void Start () {
 		Debug.Log (gameObject.name);
 		buttonSet.gameObject.SetActive (false);
+		tapObj.SetActive( true );
 
 		count = PlayerPrefs.GetInt("Charge");
 	}
@@ -52,6 +55,7 @@ public class UIcontroller : MonoBehaviour {
 
 		PlayerPrefs.SetInt("Charge", count);
 
+		tapObj.SetActive(false);
 
 		StartCoroutine (waitanddisplaybutton());
 	}
