@@ -28,7 +28,6 @@ public class DetailController : MonoBehaviour {
 	void Start () {
 		instance = this;
 		panel.localScale = Vector3.zero;
-		panel.DOScale(panelEndScale, onDuration).SetEase(Ease.OutBack);
 	}
 	
 	// Update is called once per frame
@@ -59,7 +58,11 @@ public class DetailController : MonoBehaviour {
 			Close ();
 			return;
 		}
+
+		panel.DOScale(panelEndScale, onDuration).SetEase(Ease.OutBack);
+
 		stoneImageObj.sprite = stoneImage[ stone_id ];
+		stoneImageObj.SetNativeSize();
 
 		// タイトル
 		title.text = stoneImage [stone_id].name ;
