@@ -10,16 +10,17 @@ public class dictionaryjewelController : MonoBehaviour {
 	public float scale = 0.1f;
 	public float unknwonScale = 0.4f;
 	public Transform parent;
+	private bool isEncounted;
 
 	private int id;
 
-	public void init(int id, bool isencountered){
+	public void init(int id, bool isEncounted){
 
 		this.id = id;
 
 		GameObject stone = null;
 
-		if (!isencountered) {
+		if (!isEncounted) {
 			stone = Instantiate(unknwon);
 			stone.transform.localScale = Vector2.one * unknwonScale;
 
@@ -35,6 +36,7 @@ public class dictionaryjewelController : MonoBehaviour {
 		stone.transform.SetParent( parent );
 		stone.transform.localPosition = Vector2.zero;
 
+		this.isEncounted = isEncounted;
 //		jewelimage.sprite = jewelsprites [id];
 
 	}
@@ -44,6 +46,9 @@ public class dictionaryjewelController : MonoBehaviour {
 	/// </summary>
 	public void Press()
 	{
+		// 未遭遇は詳細表示しない
+		if( !isEncounted ) return;
+
 		SceneManager.LoadScene("detail", LoadSceneMode.Additive);
 
 		StartCoroutine (DisplayDetailAndInit ());
