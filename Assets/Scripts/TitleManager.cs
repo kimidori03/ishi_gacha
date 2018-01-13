@@ -22,9 +22,16 @@ public class TitleManager : MonoBehaviour {
 	public float maxKira2MoveSpeed = 5f;
 	public Vector2 moveDirection = Vector2.down;
 
+	public GameObject[] buttonTitles;
+
 	// Use this for initialization
 	void Start ()
 	{
+		// メニューシーンの上の文字を非表示
+		foreach( GameObject g in buttonTitles )
+		{
+			g.SetActive( false );
+		}
 		StartCoroutine (showlogo());
 	}
 	
@@ -52,6 +59,12 @@ public class TitleManager : MonoBehaviour {
 		// メニューシーンを開く
 		SceneManager.LoadSceneAsync( "MenuUI", LoadSceneMode.Additive );
 	
+		// メニューシーンの上の文字を表示
+		foreach( GameObject g in buttonTitles )
+		{
+			g.SetActive( true );
+		}
+
 	}
 
 	private void SpawnKira2()
