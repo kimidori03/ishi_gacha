@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -133,7 +134,17 @@ public class Ishi_button : MonoBehaviour {
 			}
 
 			// 選ばれた石のインデックスをセーブ
-			PlayerPrefs.SetString ("jewel", index.ToString () + ",");
+			{
+				var current = PlayerPrefs.GetString("jewel");
+				var strs = new List<string>( current.Split(',') );
+				strs.Add( ( index.ToString() + "," ) );
+				strs = strs.Distinct().ToList();
+
+				string newString = "";
+				strs.ForEach( s => newString += (s + ",") );
+
+				PlayerPrefs.SetString ("jewel", newString);
+			}
 	//		int index = Random.Range (0, Stoneprefab.Count);
 
 			// 石プレハブを生成

@@ -24,8 +24,8 @@ public class UIcontroller : MonoBehaviour {
 	}
 		
 	// Use this for initialization
-	void Start () {
-		Debug.Log (gameObject.name);
+	void Start () 
+	{
 		buttonSet.gameObject.SetActive (false);
 		tapObj.SetActive( true );
 

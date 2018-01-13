@@ -38,7 +38,8 @@ public class dictionaryComtroller : MonoBehaviour {
 	void Update () {
 		
 	}
-	private bool checkisencountered(int id){
+	private bool checkisencountered(int id)
+	{
 		var data = PlayerPrefs.GetString ("jewel");
 		if (string.IsNullOrEmpty (data)) {
 			return false;
