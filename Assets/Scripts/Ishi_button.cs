@@ -121,16 +121,18 @@ public class Ishi_button : MonoBehaviour {
 			// 出現する石インデックスを選ぶ
 			int index;
 			int seed = Random.Range (0, 100);
-			if (seed >= 95) {
-				index = 4;
-			} else if (seed >= 90) {
-				index = 3;
-			} else if (seed >= 65) {
-				index = 2;
-			} else if (seed >= 35) {
-				index = 1;
+			if (seed >= 98) {
+				index = 0; //ダイヤモンド 3%
+			} else if (seed >= 88) {
+				index = 1; //オパール 10%
+			} else if (seed >= 78) {
+				index = 2; //ルビー 10%
+			} else if (seed >= 58) {
+				index = 3; //ターコイズ 20%
+			} else if (seed >= 38) {
+				index = 4; //エメラルド 20%
 			} else {
-				index = 0;
+				index = 5; //クリスタル
 			}
 
 			// 選ばれた石のインデックスをセーブ
