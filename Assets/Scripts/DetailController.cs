@@ -11,8 +11,8 @@ public class DetailController : MonoBehaviour {
 
 	public Image stoneImageObj;
 
-	public string[] titleTempates;
-	public Text title;
+	public Sprite[] titleImages;
+	public Image title;
 
 	public string[] descTemplates;
 	public Text desc;
@@ -65,7 +65,8 @@ public class DetailController : MonoBehaviour {
 		stoneImageObj.SetNativeSize();
 
 		// タイトル
-		title.text = stoneImage [stone_id].name ;
+		title.sprite = titleImages [stone_id] ;
+		title.SetNativeSize();
 
 		// 説明文
 		desc.text = stoneImage [stone_id].name + "の説明";
