@@ -69,6 +69,6 @@ public class DetailController : MonoBehaviour {
 		title.SetNativeSize();
 
 		// 説明文
-		desc.text = stoneImage [stone_id].name + "の説明";
+		desc.text = descTemplates [stone_id];
 	}
 }
