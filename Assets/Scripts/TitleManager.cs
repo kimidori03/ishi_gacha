@@ -15,7 +15,6 @@ public class TitleManager : MonoBehaviour {
 	public int maxKira2Count = 10;
 	public float minKira2SpawnInterval = 1f;
 	public float maxKira2SpawnInterval = 3f;
-	private float kira2Timer = 0;
 	private float currentInterval = 1f;
 	public Transform kira2Parent;
 	public float minKira2MoveSpeed = 1f;

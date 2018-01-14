@@ -20,7 +20,8 @@ public class UIcontroller : MonoBehaviour {
 		buttonSet.gameObject.SetActive (false);
 		tapObj.SetActive( true );
 
-		SceneManager.UnloadSceneAsync("MenuUI");
+	//	SceneManager.UnloadSceneAsync("MenuUI");
+		MenuUIController.instance.enableButtons = false;
 	}
 		
 	// Use this for initialization
@@ -30,6 +31,12 @@ public class UIcontroller : MonoBehaviour {
 		tapObj.SetActive( true );
 
 		count = PlayerPrefs.GetInt("Charge");
+
+		MenuUIController.instance.enableButtons = false;
+
+		var scene = SceneManager.GetSceneByName("gacha");
+		SceneManager.SetActiveScene(scene);
+			 
 	}
 	
 	// Update is called once per frame
@@ -46,7 +53,9 @@ public class UIcontroller : MonoBehaviour {
 		{
 			Debug.LogWarning ("石不足");
 
-			SceneManager.LoadSceneAsync("MenuUI", LoadSceneMode.Additive);
+		//	SceneManager.LoadSceneAsync("MenuUI", LoadSceneMode.Additive);
+
+			MenuUIController.instance.enableButtons = true;
 
 			return;
 		}
@@ -71,11 +80,10 @@ public class UIcontroller : MonoBehaviour {
 		inexpression = false;
 
 		// メニューUI表示
-		SceneManager.LoadScene( "MenuUI", LoadSceneMode.Additive );
+		// SceneManager.LoadScene( "MenuUI", LoadSceneMode.Additive );
 
-	}
-	public void button() 
-	{
-		SceneManager.LoadScene ("dictionary");
+		MenuUIController.instance.enableButtons = true;
+
+
 	}
 }

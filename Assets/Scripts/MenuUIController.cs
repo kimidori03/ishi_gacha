@@ -2,12 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuUIController : MonoBehaviour {
 
+	public static MenuUIController instance;
+	public string currentSceneName;
+
+	public Transform buttonParent;
+	private Image[] buttons;
+
+	private string[] sceneNames = new string[]{"Charge", "gacha", "dictionary"};
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		instance = this;	
+		currentSceneName = "title";
+
+		buttons = buttonParent.GetComponentsInChildren<Image>();
 	}
 	
 	// Update is called once per frame
@@ -17,20 +30,34 @@ public class MenuUIController : MonoBehaviour {
 
 	public void OnClickButton( int idx )
 	{
-		switch( idx )
+		if( string.IsNullOrEmpty( currentSceneName ) )
 		{
-		case 0:
-			SceneManager.LoadScene("Charge");
-			break;
-			case 1:
-			SceneManager.LoadScene("gacha");
+			return;
+		}
 
-			break;
-			case 2:
-			default:
-			SceneManager.LoadScene("dictionary");
+		var newSceneName = sceneNames[ idx ];
 
-			break;
+		if( currentSceneName.Equals( newSceneName ) ) return;
+
+		SceneManager.LoadScene(newSceneName, LoadSceneMode.Additive);
+
+			//SceneManager.UnloadSceneAsync(currentSceneName);
+		SceneManager.UnloadScene( currentSceneName );
+
+		currentSceneName = newSceneName;
+	}
+
+	public bool enableButtons{
+		get
+		{
+			return buttons[0].enabled;
+		}
+		set
+		{
+			foreach( Image i in buttons )
+			{
+				i.enabled = value;
+			}
 		}
 	}
 }

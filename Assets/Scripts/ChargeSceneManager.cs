@@ -54,7 +54,7 @@ public class ChargeSceneManager : MonoBehaviour
 
 		Debug.Log("読み込み ->" + count.ToString() );
 
-		SceneManager.LoadSceneAsync("MenuUI", LoadSceneMode.Additive);
+	//	SceneManager.LoadSceneAsync("MenuUI", LoadSceneMode.Additive);
 	}
 	
 	// Update is called once per frame
