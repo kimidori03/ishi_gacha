@@ -14,7 +14,7 @@ public class dictionaryjewelController : MonoBehaviour {
 
 	private int id;
 
-	public void init(int id, bool isEncounted){
+	public void init(int id, bool isEncounted, float itemScale){
 
 		this.id = id;
 
@@ -22,13 +22,12 @@ public class dictionaryjewelController : MonoBehaviour {
 
 		if (!isEncounted) {
 			stone = Instantiate(unknwon);
-			stone.transform.localScale = Vector2.one * unknwonScale;
-
+			stone.transform.localScale = Vector2.one * unknwonScale * itemScale;
 		}
 		else if( id < jewels.Length )
 		{
 			stone = Instantiate(jewels[id]);
-			stone.transform.localScale = Vector2.one * scale;
+			stone.transform.localScale = Vector2.one * scale * itemScale;
 		}
 
 		if( stone == null ) return;

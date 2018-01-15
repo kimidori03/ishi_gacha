@@ -11,7 +11,8 @@ public class dictionaryComtroller : MonoBehaviour {
 	public int linenumber = 5;
 	public int row1 = 4;
 	public int row2 = 3;
-
+	public float itemScale = 1f;
+	public bool halfSizeStone = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,7 +26,8 @@ public class dictionaryComtroller : MonoBehaviour {
 				var obj = Instantiate (ishiprefab).GetComponent < dictionaryjewelController >();
 				obj.transform.SetParent (ishibase);
 				obj.transform.localPosition = originposition + new Vector2 ((offset.x * i)+add, offset.y * line);
-				obj.init (id, checkisencountered(id));
+				obj.transform.localScale = new Vector2 (itemScale, itemScale);
+				obj.init (id, checkisencountered(id), itemScale * (halfSizeStone ? 0.5f : 1f));
 				id++;				
 			}
 		}
